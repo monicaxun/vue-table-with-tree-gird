@@ -68,7 +68,7 @@ export default {
         <tfoot>
           <tr class={ `${this.prefixCls}__footer-row` }>
             { this.table.tableColumns.map((column, columnIndex) =>
-              <td class={ getClassName.call(this) }>
+              <td v-show={ column.visible } class={ getClassName.call(this) }>
                 <div class={ `${this.prefixCls}__cell-inner` }>
                   { this.table.summaryMethod
                     ? this.table.summaryMethod(this.table.bodyData, column, columnIndex)

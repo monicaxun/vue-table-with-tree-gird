@@ -262,6 +262,7 @@ export default {
                   on-mouseleave={ $event => this.handleEvent($event, 'row', { row, rowIndex }, { hover: false }) }>
                   { this.table.tableColumns.map((column, columnIndex) =>
                       <td
+                        v-show={ column.visible }
                         style={ getStyle.call(this, 'cell', row, rowIndex, column, columnIndex) }
                         class={ getClassName.call(this, 'cell', row, rowIndex, column, columnIndex) }
                         on-click={ $event => this.handleEvent($event, 'cell', { row, rowIndex, column, columnIndex }) }
