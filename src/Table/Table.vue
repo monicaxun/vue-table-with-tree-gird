@@ -101,6 +101,9 @@
     columns.forEach((column, index) => {
       let width = '';
       let minWidth = '';
+      if (column.visible) {
+        column.visible = true;
+      }
       if (!column.width) {
         if (column.minWidth) {
           minWidth = typeof column.minWidth === 'number' ? column.minWidth : parseInt(column.minWidth, 10);
