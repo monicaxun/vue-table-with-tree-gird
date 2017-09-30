@@ -101,7 +101,7 @@
     columns.forEach((column, index) => {
       let width = '';
       let minWidth = '';
-      if (column.visible) {
+      if (column.visible === undefined) {
         column.visible = true;
       }
       if (!column.width) {
