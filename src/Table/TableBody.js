@@ -241,11 +241,6 @@ export default {
     // Template
     return (
       <table cellspacing="0" cellpadding="0" border="0" class={ `${this.prefixCls}__body` }>
-        <colgroup>
-          { this.table.tableColumns.map(column =>
-            <col width={ column.computedWidth || column.minWidth || column.width }></col>)
-          }
-        </colgroup>
         <tbody>
           { this.table.bodyData.length > 0
             ? this.table.bodyData.map((row, rowIndex) =>

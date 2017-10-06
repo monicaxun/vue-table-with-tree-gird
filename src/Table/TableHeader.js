@@ -63,11 +63,6 @@ export default {
     // Template
     return (
       <table cellspacing="0" cellpadding="0" border="0" class={ `${this.prefixCls}__header` }>
-        <colgroup>
-          { this.table.tableColumns.map(column =>
-            <col width={ column.computedWidth || column.minWidth || column.width }></col>)
-          }
-        </colgroup>
         <thead>
           <tr class={ `${this.prefixCls}__header-row` }>
             { this.table.tableColumns.map((column, columnIndex) =>
