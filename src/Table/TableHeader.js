@@ -26,6 +26,15 @@ export default {
     },
   },
   render() {
+    // style
+    function getStyle(type, column, columnIndex) {
+      let style;
+      if (this.isSelectionCell(this.table, columnIndex)) {
+        style = 'width: 50px';
+      }
+      return style;
+    }
+
     // className
     function getClassName(type, { headerAlign, prop }) {
       const certainType = this.validateType(type, ['cell', 'inner'], 'getClassName');
@@ -68,7 +77,8 @@ export default {
         <thead>
           <tr class={ `${this.prefixCls}__header-row` }>
             { this.table.tableColumns.map((column, columnIndex) =>
-                <th v-show={ column.visible } class={ getClassName.call(this, 'cell', column) }>
+                <th v-show={ column.visible } class={ getClassName.call(this, 'cell', column) }
+                    style={ getStyle.call(this, 'column', column, columnIndex) }>
                   <div class={ getClassName.call(this, 'inner', column) }>
                     { renderLabel.call(this, column, columnIndex) }
                   </div>

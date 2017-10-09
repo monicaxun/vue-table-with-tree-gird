@@ -110,7 +110,10 @@ export default {
     // style
     function getStyle(type, row, rowIndex, column, columnIndex) {
       const certainType = this.validateType(type, ['cell', 'row'], 'getStyle');
-      const style = this.table[`${type}Style`];
+      let style = this.table[`${type}Style`];
+      if (this.isSelectionCell(this.table, columnIndex)) {
+        style = 'width: 50px';
+      }
       if (typeof style === 'function') {
         if (certainType.row) {
           return style.call(null, row, rowIndex);
