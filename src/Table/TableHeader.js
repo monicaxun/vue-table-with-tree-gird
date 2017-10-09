@@ -22,7 +22,7 @@ export default {
         _isChecked: checked,
       }));
 
-      this.table.$emit('toggle-all-checked', checked);
+      return this.table.$emit('toggle-all-checked', checked);
     },
   },
   render() {
