@@ -21,6 +21,8 @@ export default {
         ...row,
         _isChecked: checked,
       }));
+
+      this.table.$emit('toggle-all-checked', checked);
     },
   },
   render() {
