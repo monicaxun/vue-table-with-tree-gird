@@ -1,6 +1,6 @@
 {
   "name": "v-tree-table",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "A table (with tree-grid) component for Vue.js 2.0. (Its style extends iView)",
   "keywords": [
     "vue",
