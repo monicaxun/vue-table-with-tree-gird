@@ -52,6 +52,7 @@
         _isHover: false,
         _isExpanded: false,
         _isChecked: false,
+        _isCheckedDisabled: false,
         _level: level,
         _isHide: isFold ? level !== 1 : false,
         _isFold: isFold,
