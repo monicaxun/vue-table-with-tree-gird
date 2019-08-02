@@ -181,7 +181,7 @@ export default {
       }
       // SelectionType's Checkbox
       if (this.isSelectionCell(this.table, columnIndex)) {
-        let disabled = row._isDisabledChecked;
+        let disabled = row._isCheckedDisabled;
         let allCheck;
         let childrenIndex;
         let selectionTypeDisabledBy = column.selectionTypeDisabledBy;
@@ -190,7 +190,7 @@ export default {
           childrenIndex = this.getChildrenIndex(row._level, rowIndex, false);
           allCheck = true;
           for (let i = 0; i < childrenIndex.length; i++) {
-            if (!this.table.bodyData[childrenIndex[i]]._isChecked || this.table.bodyData[childrenIndex[i]]._isDisabledChecked) {
+            if (!this.table.bodyData[childrenIndex[i]]._isChecked || this.table.bodyData[childrenIndex[i]]._isCheckedDisabled) {
               allCheck = false;
               break;
             }
