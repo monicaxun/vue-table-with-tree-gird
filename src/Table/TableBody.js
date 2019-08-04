@@ -184,7 +184,6 @@ export default {
         let disabled = row._isCheckedDisabled;
         let allCheck;
         let childrenIndex;
-        let selectionTypeDisabledBy = column.selectionTypeDisabledBy;
         const hasChildren = row._childrenLen > 0;
         if (hasChildren) {
           childrenIndex = this.getChildrenIndex(row._level, rowIndex, false);
