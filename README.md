@@ -1,10 +1,12 @@
 # vue-tree-table
 
 > A table (with tree-grid) component for Vue.js 2.0. (Its style extends [@iView](https://github.com/iview/iview))
-> 
+
 > 修复原先$expand不起作用的bug
->
+
 > 暴露全选checkbox的toggle-all-checked事件
+
+> 新增disable-checked-by属性，通过某个属性值控制checkbox是否disabled
 
 ## Example
 
