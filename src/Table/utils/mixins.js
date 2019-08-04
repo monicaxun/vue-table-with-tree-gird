@@ -27,7 +27,8 @@ export default {
         (table.showIndex && table.expandType && columnIndex === 2) ||
         (!table.showIndex && table.expandType && columnIndex === 1) ||
         (table.showIndex && !table.expandType && columnIndex === 1) ||
-        (!table.showIndex && !table.expandType && columnIndex === 0)
+        (!table.showIndex && !table.expandType && columnIndex === 0) ||
+        (table.Error)
       );
     },
   },
