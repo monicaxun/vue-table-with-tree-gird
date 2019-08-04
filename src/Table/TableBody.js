@@ -181,6 +181,7 @@ export default {
       }
       // SelectionType's Checkbox
       if (this.isSelectionCell(this.table, columnIndex)) {
+        let disabled = row._isCheckedDisabled;
         let allCheck;
         let childrenIndex;
         const hasChildren = row._childrenLen > 0;
@@ -188,7 +189,7 @@ export default {
           childrenIndex = this.getChildrenIndex(row._level, rowIndex, false);
           allCheck = true;
           for (let i = 0; i < childrenIndex.length; i++) {
-            if (!this.table.bodyData[childrenIndex[i]]._isChecked) {
+            if (!this.table.bodyData[childrenIndex[i]]._isChecked || this.table.bodyData[childrenIndex[i]]._isCheckedDisabled) {
               allCheck = false;
               break;
             }
@@ -208,6 +209,7 @@ export default {
         return <Checkbox
           indeterminate={ indeterminate }
           value={ allCheck }
+          disabled={ disabled }
           onOn-change={ isChecked => this.handleEvent(null, 'checkbox', { row, rowIndex, column, columnIndex }, { isChecked }) }>
           </Checkbox>;
       }

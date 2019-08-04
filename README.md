@@ -1,6 +1,8 @@
-# vue-table-with-tree-grid
+# vue-tree-table
 
 > A table (with tree-grid) component for Vue.js 2.0. (Its style extends [@iView](https://github.com/iview/iview))
+> 修复原先$expand不起作用的bug
+> 暴露全选checkbox的toggle-all-checked事件
 
 ## Example
 
@@ -11,20 +13,20 @@
 Use npm:
 
 ```shell
-npm i vue-table-with-tree-grid -S
+npm i table-tree-grid -S
 ```
 
 Or use yarn:
 
 ```shell
-yarn add vue-table-with-tree-grid
+yarn add table-tree-grid
 ```
 
 ## Usage
 
 ```javascript
 import Vue from 'vue'
-import ZkTable from 'vue-table-with-tree-grid'
+import ZkTable from 'table-tree-grid'
 
 Vue.use(ZkTable)
 ```
@@ -33,7 +35,7 @@ Or
 
 ```javascript
 import Vue from 'vue'
-import ZkTable from 'vue-table-with-tree-grid'
+import ZkTable from 'table-tree-grid'
 
 Vue.component(ZkTable.name, ZkTable)
 ```
@@ -64,6 +66,7 @@ more information please see [example...](https://github.com/MisterTaki/vue-table
 | is-fold | 树形表格中父级是否默认折叠 | Boolean | - | true |
 | expand-type | 是否为展开行类型表格（为 True 时，需要添加名称为 '$expand' 的[作用域插槽](https://cn.vuejs.org/v2/guide/components.html#作用域插槽), 它可以获取到 row, rowIndex) | Boolean | - | false |
 | selection-type | 是否为多选类型表格 | Boolean | - | false |
+| disable-checked-by | 根据字段值渲染checkbox为disabled | String | - | false |
 | row-key | 行数据的 Key，用来优化 Table 的渲染 | Function | row, rowIndex | rowIndex |
 | row-class-name | 额外的表格行的类名 | String, Function | row, rowIndex | - |
 | cell-class-name | 额外的表格行的类名 | String, Function | row, rowIndex, column, columnIndex | - |
@@ -100,6 +103,7 @@ more information please see [example...](https://github.com/MisterTaki/vue-table
 | checkbox-click | 鼠标单击checkbox | row, rowIndex, $event |
 | tree-icon-click | 鼠标单击树形icon | row, rowIndex, $event |
 | expand-cell-click | 鼠标单击展开单元格 | row, rowIndex, $event |
+| toggle-all-checked | 鼠标点击全选选项 | checked |
 
 ### Table Methods
 
