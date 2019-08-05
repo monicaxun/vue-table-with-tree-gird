@@ -181,7 +181,17 @@ export default {
       }
       // SelectionType's Checkbox
       if (this.isSelectionCell(this.table, columnIndex)) {
-        let disabled = row._isCheckedDisabled;
+        let disableCheckboxBy = this.table.disableCheckboxBy;
+        let disabled = false;
+        if(disableCheckboxBy) {
+          if(typeof disableCheckboxBy === "string") {
+            disabled = row[disableCheckboxBy];
+          } else if(typeof disableCheckboxBy === "function") {
+            disabled = disableCheckboxBy(row);
+          } else {
+            // No logic
+          }
+        }
         let allCheck;
         let childrenIndex;
         const hasChildren = row._childrenLen > 0;
@@ -189,7 +199,7 @@ export default {
           childrenIndex = this.getChildrenIndex(row._level, rowIndex, false);
           allCheck = true;
           for (let i = 0; i < childrenIndex.length; i++) {
-            if (!this.table.bodyData[childrenIndex[i]]._isChecked || this.table.bodyData[childrenIndex[i]]._isCheckedDisabled) {
+            if (!this.table.bodyData[childrenIndex[i]]._isChecked || disabled) {
               allCheck = false;
               break;
             }
@@ -197,6 +207,7 @@ export default {
         } else {
           allCheck = row._isChecked;
         }
+
         let indeterminate = false;
         if (hasChildren && !allCheck) {
           for (let i = 0; i < childrenIndex.length; i++) {

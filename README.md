@@ -6,7 +6,7 @@
 
 > 暴露全选checkbox的toggle-all-checked事件
 
-> 新增disable-checked-by属性，通过某个属性值控制checkbox是否disabled
+> 新增disable-checkbox-by属性，控制checkbox是否disabled
 
 ## Example
 
@@ -70,7 +70,7 @@ more information please see [example...](https://github.com/MisterTaki/vue-table
 | is-fold | 树形表格中父级是否默认折叠 | Boolean | - | true |
 | expand-type | 是否为展开行类型表格（为 True 时，需要添加名称为 '$expand' 的[作用域插槽](https://cn.vuejs.org/v2/guide/components.html#作用域插槽), 它可以获取到 row, rowIndex) | Boolean | - | false |
 | selection-type | 是否为多选类型表格 | Boolean | - | false |
-| disable-checked-by | 根据字段值渲染checkbox为disabled | String | - | false |
+| disable-checkbox-by | 渲染checkbox为disabled | String, Function | row | '' |
 | row-key | 行数据的 Key，用来优化 Table 的渲染 | Function | row, rowIndex | rowIndex |
 | row-class-name | 额外的表格行的类名 | String, Function | row, rowIndex | - |
 | cell-class-name | 额外的表格行的类名 | String, Function | row, rowIndex, column, columnIndex | - |

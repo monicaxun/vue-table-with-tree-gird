@@ -20,7 +20,7 @@
       :show-index="props.showIndex"
       :tree-type="props.treeType"
       :is-fold="props.isFold"
-      :disable-checked-by="props.disableCheckedBy"
+      :disable-checkbox-by="disableCheckboxBy"
       @checkbox-click="checkboxClick"
       @toggle-all-checked="toggleChecked"
       :expand-type="props.expandType"
@@ -56,9 +56,11 @@ export default {
         isFold: true,
         expandType: false,
         selectionType: true,
-        disableCheckedBy: "isRedudent"
       },
-      data: [
+      disableCheckboxBy: (row) => {
+        return row.score <= 10;
+      },
+        data: [
         {
           name: "Jack",
           sex: "male",
@@ -262,7 +264,7 @@ export default {
       debugger;
       // eslint-disable-next-line
       console.log("checkboxClick", row, rowIndex, $event);
-    }
+    },
   }
 };
 </script>

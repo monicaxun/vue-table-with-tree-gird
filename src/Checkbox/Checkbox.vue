@@ -36,7 +36,7 @@
           `${this.prefixCls}`,
           {
             [`${this.prefixCls}--disabled`]: this.disabled,
-            [`${this.prefixCls}--checked`]: this.value,
+            [`${this.prefixCls}--checked`]: !this.disabled && this.value,
             [`${this.prefixCls}--indeterminate`]: this.indeterminate,
           },
         ];

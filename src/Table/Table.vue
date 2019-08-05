@@ -43,18 +43,15 @@
   /* eslint-disable no-underscore-dangle */
   /* eslint-disable no-param-reassign */
 
-  function getBodyData(data, isTreeType, childrenProp, isFold, disableCheckedBy="", level = 1) {
+  function getBodyData(data, isTreeType, childrenProp, isFold, level = 1) {
     let bodyData = [];
     data.forEach((row, index) => {
       const children = row[childrenProp];
       const childrenLen = Object.prototype.toString.call(children).slice(8, -1) === 'Array' ? children.length : 0;
-      // eslint-disable-next-line      
-      console.log("disabledBy", disableCheckedBy);
       bodyData.push({
         _isHover: false,
         _isExpanded: false,
         _isChecked: false,
-        _isCheckedDisabled: disableCheckedBy ? !!row[disableCheckedBy] : false,
         _level: level,
         _isHide: isFold ? level !== 1 : false,
         _isFold: isFold,
@@ -64,7 +61,7 @@
       });
       if (isTreeType) {
         if (childrenLen > 0) {
-          bodyData = bodyData.concat(getBodyData(children, true, childrenProp, isFold, disableCheckedBy, level + 1));
+          bodyData = bodyData.concat(getBodyData(children, true, childrenProp, isFold, level + 1));
         }
       }
     });
@@ -75,7 +72,7 @@
     return {
       bodyHeight: 'auto',
       firstProp: table.columns[0].prop,
-      bodyData: getBodyData(table.data, table.treeType, table.childrenProp, table.isFold, table.disableCheckedBy),
+      bodyData: getBodyData(table.data, table.treeType, table.childrenProp, table.isFold),
     };
   }
 
@@ -226,8 +223,8 @@
       cellClassName: [String, Function],
       rowStyle: [Object, Function],
       cellStyle: [Object, Function],
-      disableCheckedBy: {
-        type: String,
+      disableCheckboxBy: {
+        type: [String, Function],
         default: ''
       }
     },
@@ -295,7 +292,8 @@
         }
         const checkedIndexs = [];
         this.bodyData.forEach((item, index) => {
-          if (item._isChecked && !item._isCheckedDisabled) {
+          let disabled = this.disableCheckboxBy ? (typeof this.disableCheckboxBy === "string" ? item[this.disableCheckboxBy] : (typeof this.disableCheckboxBy === "function" && this.disableCheckboxBy(item))) : false;
+          if (item._isChecked && !disabled) {
             if (prop === 'index') {
               checkedIndexs.push(index);
             } else {
